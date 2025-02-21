@@ -17,7 +17,7 @@ Este projeto foi criado para explorar e demonstrar boas práticas de automação
 ## 📂 Estrutura do Projeto
 
 ```sh
-📦 cypress-project
+📦 automacao_cypress
 ├── 📂 cypress
 │   ├── 📂 download      # Mock de dados
 │   ├── 📂 e2e           # Testes automatizados
