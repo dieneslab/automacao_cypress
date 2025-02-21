@@ -85,5 +85,3 @@ Este projeto está sob a licença MIT. Para mais detalhes, consulte o arquivo [L
 
 Desenvolvido por [Dienes Stein](https://github.com/dienesgithub) 💻✨
 
-Pode trazer esse README no formato para que eu coloque no arquivo TXT?
-
