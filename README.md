@@ -23,7 +23,7 @@ Este projeto foi criado para explorar e demonstrar boas práticas de automação
 │   ├── 📂 e2e           # Testes automatizados
 │   ├── 📂 fixtures      # Mock de dados
 │   ├── 📂 support       # Comandos customizados e configurações globais
-├── 📜 .env              # Arquivo com dados sensíveis
+├── 📜 .env              # Arquivo com dados sensíveis (precisa ser criado para execução local)
 ├── 📜 cypress.config.js # Configuração do Cypress
 ├── 📜 package.lock.json # Dependências do projeto
 ├── 📜 package.json      # Dependências do projeto
@@ -54,6 +54,13 @@ npm install mochawesome --save-dev
 npm install dotenv --save
 ```
 
+### 📄 Criar /.env
+
+```sh
+CYPRESS_EMAIL=example@example.com
+CYPRESS_PASSWORD=password_senha
+```
+
 ### ▶️ Executar Testes no Modo Interativo
 
 ```sh
@@ -80,7 +87,7 @@ Os arquivos gerados ficam na pasta `cypress/reports`.
 
 A execução no GitHub pelo Action é utilizado as variáveis secrets, garantindo a segurança de dados sensíveis do projeto.
 
-Para rodar localmente é necessário, no arquivo .env, alterar para seus dados nos testes.
+IMPORTANTE: Para rodar localmente é necessário, no arquivo .env.
 
 ## 🤝 Contribuindo
 
