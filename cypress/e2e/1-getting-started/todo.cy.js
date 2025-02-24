@@ -139,5 +139,12 @@ describe('example to-do app', () => {
       // Finally, make sure that the clear button no longer exists.
       cy.contains('Clear completed').should('not.exist')
     })
+
+    it('environment test with email and password', () => {
+      cy.get('[data-test=new-todo]').type(Cypress.env('email'))
+      cy.get('[data-test=new-todo]').clear()
+      cy.get('[data-test=new-todo]').type(Cypress.env('password'))
+      cy.wait(3000)
+    })
   })
 })

@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^14.0.3"
+    "cypress": "^14.0.3",
+    "mochawesome": "^7.1.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }

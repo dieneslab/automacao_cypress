@@ -49,6 +49,8 @@ cd automacao_cypress
 
 ```sh
 npm install
+npm install mochawesome --save-dev
+npm install dotenv --save
 ```
 
 ### ▶️ Executar Testes no Modo Interativo
