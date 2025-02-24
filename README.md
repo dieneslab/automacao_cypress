@@ -23,6 +23,7 @@ Este projeto foi criado para explorar e demonstrar boas práticas de automação
 │   ├── 📂 e2e           # Testes automatizados
 │   ├── 📂 fixtures      # Mock de dados
 │   ├── 📂 support       # Comandos customizados e configurações globais
+├── 📜 .env              # Arquivo com dados sensíveis
 ├── 📜 cypress.config.js # Configuração do Cypress
 ├── 📜 package.lock.json # Dependências do projeto
 ├── 📜 package.json      # Dependências do projeto
@@ -74,6 +75,12 @@ npx cypress run --reporter mochawesome
 ```
 
 Os arquivos gerados ficam na pasta `cypress/reports`.
+
+### 🔒 Arquivo .env e secrets no GitHub
+
+A execução no GitHub pelo Action é utilizado as variáveis secrets, garantindo a segurança de dados sensíveis do projeto.
+
+Para rodar localmente é necessário, no arquivo .env, alterar para seus dados nos testes.
 
 ## 🤝 Contribuindo
 
