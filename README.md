@@ -76,7 +76,7 @@ npx cypress run --reporter mochawesome
 
 Os arquivos gerados ficam na pasta `cypress/reports`.
 
-### 🔒 Arquivo .env e secrets no GitHub
+## 🔒 Arquivo .env e secrets no GitHub
 
 A execução no GitHub pelo Action é utilizado as variáveis secrets, garantindo a segurança de dados sensíveis do projeto.
 
