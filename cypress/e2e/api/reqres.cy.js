@@ -1,6 +1,11 @@
 /// <reference types="cypress" />
 
 describe('Teste API', () => {
+  
+  beforeEach(() => {
+    cy.abrirLoading()
+  })  
+
   it('Teste de POST /login', () => {
     cy.request({
       method: 'POST',
@@ -12,6 +17,7 @@ describe('Teste API', () => {
     }).then((response) => {
       expect(response.status).to.eq(200)
       expect(response.body).to.have.property('token')
+      cy.log(JSON.stringify(response.body))
     })
   })
 
