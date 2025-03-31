@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { defineConfig } = require("cypress");
+const { defineConfig } = require("cypress")
 
 module.exports = defineConfig({
   e2e: {
@@ -9,5 +9,6 @@ module.exports = defineConfig({
       config.env.password = process.env.CYPRESS_PASSWORD
       return config
     },
+    baseUrl: "https://www.google.com.br"
   },
-});
+})
