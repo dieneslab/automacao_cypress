@@ -23,7 +23,7 @@ Este projeto foi criado para explorar e demonstrar boas práticas de automação
 │   ├── 📂 e2e           # Testes automatizados
 │   ├── 📂 fixtures      # Mock de dados
 │   ├── 📂 pages         # Mapeamento de elementos
-│   ├── 📂 report        # Relatórios dos testes
+│   ├── 📂 report        # Relatórios dos testes (criado somente na execução com relatórios)
 │   ├── 📂 support       # Comandos customizados e configurações globais
 ├── 📜 .env              # Arquivo com dados sensíveis (precisa ser criado para execução local)
 ├── 📜 cypress.config.js # Configuração do Cypress
@@ -56,7 +56,7 @@ npm install mochawesome --save-dev
 npm install dotenv --save
 ```
 
-### 📄 Criar /.env
+### 📄 Criar Arquivo /.env
 
 ```sh
 CYPRESS_EMAIL=example@example.com
@@ -75,21 +75,30 @@ npx cypress open
 npx cypress run
 ```
 
-## 📊 Relatórios de Testes
+## 📜 Executar Testes com Relatórios
 
 Os relatórios são gerados automaticamente após a execução dos testes. Para visualizar:
 
 ```sh
-npx cypress run --reporter mochawesome
+npx cypress run --spec "cypress/e2e/api/*" --reporter mochawesome --reporter-options "reportDir=cypress/report/api,overwrite=true,html=true,json=true"
+npx cypress run --spec "cypress/e2e/front/*" --reporter mochawesome --reporter-options "reportDir=cypress/report/front,overwrite=true,html=true,json=true"
 ```
 
 Os arquivos gerados ficam na pasta `cypress/reports`.
 
+## 🛠 Execução Automática via GitHub Actions e Relatórios
+
+A cada **push** ou **pull request**, os testes serão executados automaticamente. Para visualizar os resultados:
+1. Acesse o repositório no GitHub.
+2. Clique na aba **"Actions"**.
+3. Selecione o workflow mais recente para ver os detalhes da execução.
+4. Realize download dos relatórios na seção **"Artifacts"**
+
 ## 🔒 Arquivo .env e secrets no GitHub
 
-A execução no GitHub pelo Action é utilizado as variáveis secrets, garantindo a segurança de dados sensíveis do projeto.
+A execução no GitHub pelo **"Actions"** é utilizado as variáveis secrets, garantindo a segurança de dados sensíveis do projeto.
 
-IMPORTANTE: Para rodar localmente é necessário, no arquivo .env.
+IMPORTANTE: Para rodar localmente é necessário criar o arquivo **".env"**.
 
 ## 🤝 Contribuindo
 
