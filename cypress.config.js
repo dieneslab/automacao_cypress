@@ -17,6 +17,7 @@ module.exports = defineConfig({
     overwrite: true,
     html: true,
     json: true
-  }
+  },
+  experimentalInteractiveRunEvents: true
 })
 

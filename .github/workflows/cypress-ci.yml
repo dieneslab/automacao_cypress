@@ -33,6 +33,6 @@ jobs:
       - name: Salvar Relatório de Testes
         uses: actions/upload-artifact@v4
         with:
-          name: mochawesome-report
+          name: report
           path: cypress/report
           retention-days: 5
