@@ -6,66 +6,76 @@ describe('Teste API', () => {
     cy.abrirLoading()
   })  
 
-  it('Teste de POST /login', () => {
-    cy.request({
-      method: 'POST',
-      url: 'https://reqres.in/api/login',
-      body: {
-        email: 'eve.holt@reqres.in',
-        password: 'cityslicka'
-      }
-    }).then((response) => {
+  it('Teste de POST /login status 200', () => {
+    cy.loginApi('eve.holt@reqres.in', 'cityslicka', 200)
+  })
+  
+  it('Teste de POST /login status 400', () => {
+    cy.loginApi('eve.holt@reqres.12', 'cityslicka', 400)
+  })
+
+  it('Teste de GET /users validando alguns campos', () => {
+
+    const idUsuario = 2
+
+    cy.getUserApi(idUsuario).then((response) => {
       expect(response.status).to.eq(200)
-      expect(response.body).to.have.property('token')
+      expect(response.body.data).to.have.property('email', 'janet.weaver@reqres.in')
+      expect(response.body.data).to.have.property('first_name', 'Janet')
+      expect(response.body.data).to.have.property('last_name', 'Weaver')
+      expect(response.body.support).to.have.property('text', 'Tired of writing endless social media content? Let Content Caddy generate it for you.')
       cy.log(JSON.stringify(response.body))
     })
   })
 
-  it('Teste de GET /users', () => {
-    cy.request({
-      method: 'GET',
-      url: 'https://reqres.in/api/users/2',
-    }).then((response) => {
-      expect(response.status).to.eq(200)
-      expect(response.body).to.have.property('data')
-      expect(response.body.data).to.have.property('id', 2)
-      expect(response.body.data).to.have.property('email', 'janet.weaver@reqres.in')
-      expect(response.body.data).to.have.property('first_name', 'Janet')
-      expect(response.body.data).to.have.property('last_name', 'Weaver')
-      expect(response.body.data).to.have.property('avatar', 'https://reqres.in/img/faces/2-image.jpg')
-      expect(response.body).to.have.property('support')
-      expect(response.body.support).to.have.property('url', 'https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral')
-      expect(response.body.support).to.have.property('text', 'Tired of writing endless social media content? Let Content Caddy generate it for you.')
-      cy.log(JSON.stringify(response.body))
+  it('Teste de GET /users validando body response', () => {
 
-    })
-  })  
+    const idUsuario = 2
 
-  it('Teste de PUT /users', () => {
-    cy.request({
-      method: 'PUT',
-      url: 'https://reqres.in/api/users/2',
-      body: {
-        name: 'morpheus',
-        job: 'zion resident'
+    const bodyExpected = {
+      "data":{
+        "id":2,
+        "email":"janet.weaver@reqres.in",
+        "first_name":"Janet",
+        "last_name":"Weaver",
+        "avatar":"https://reqres.in/img/faces/2-image.jpg"
+      },
+      "support":{
+        "url":"https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral",
+        "text":"Tired of writing endless social media content? Let Content Caddy generate it for you."
       }
-    }).then((response) => {
-      expect(response.status).to.eq(200)
-      expect(response.body).to.have.property('updatedAt')
-      expect(response.body).to.have.property('name', 'morpheus')
-      expect(response.body).to.have.property('job', 'zion resident')
-      cy.log(JSON.stringify(response.body))
+    }
 
+    cy.getUserApi(idUsuario).then((response) => {
+      expect(response.status).to.eq(200)
+      cy.log('Body esperado:', JSON.stringify(bodyExpected))
+      cy.log('Body recebido:', JSON.stringify(response.body))
+      expect(response.body).to.deep.eq(bodyExpected)
+    })
+  })
+
+  it('Teste de PUT /users status 200 e valida campos inseridos', () => {
+
+    const idUsuario = 2
+
+    const body = {
+      name: 'morpheus',
+      job: 'zion resident'
+    }
+
+    cy.putUserApi(idUsuario, body, 200).then((response) => {
+      expect(response.body).to.have.property('updatedAt')
+      expect(response.body).to.have.property('name', body.name)
+      expect(response.body).to.have.property('job', body.job)
+      cy.log(JSON.stringify(response.body))
     })
   })  
 
-  it('Teste de DELETE /users', () => {
-    cy.request({
-      method: 'DELETE',
-      url: 'https://reqres.in/api/users/2',
-    }).then((response) => {
-      expect(response.status).to.eq(204)
-    })
+  it('Teste de DELETE /users status 204', () => {
+
+    const idUsuario = 2
+
+    cy.deleteUserApi(idUsuario, 204)
   }) 
 })
 
