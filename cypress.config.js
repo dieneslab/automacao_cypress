@@ -11,4 +11,12 @@ module.exports = defineConfig({
     },
     baseUrl: "https://www.google.com.br"
   },
+  reporter: "mochawesome",
+  reporterOptions: {
+    reportDir: "cypress/report",
+    overwrite: true,
+    html: true,
+    json: true
+  }
 })
+

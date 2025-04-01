@@ -28,4 +28,11 @@ jobs:
         env:
           CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
-        run: npx cypress run
+        run: npx cypress run --reporter mochawesome --reporter-options "reportDir=cypress/report,overwrite=true,html=true,json=true"
+
+      - name: Salvar Relatório de Testes
+        uses: actions/upload-artifact@v3
+        with:
+          name: mochawesome-report
+          path: cypress/report
+          retention-days: 5

@@ -22,6 +22,8 @@ Este projeto foi criado para explorar e demonstrar boas práticas de automação
 │   ├── 📂 download      # Mock de dados
 │   ├── 📂 e2e           # Testes automatizados
 │   ├── 📂 fixtures      # Mock de dados
+│   ├── 📂 pages         # Mapeamento de elementos
+│   ├── 📂 report        # Relatórios dos testes
 │   ├── 📂 support       # Comandos customizados e configurações globais
 ├── 📜 .env              # Arquivo com dados sensíveis (precisa ser criado para execução local)
 ├── 📜 cypress.config.js # Configuração do Cypress
