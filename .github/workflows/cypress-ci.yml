@@ -24,9 +24,9 @@ jobs:
       - name: Instalar dependências
         run: |
           npm install
-          npm install --save-dev mochawesome-merge
 
-      - name: Executar testes do Cypress
+      # Executar testes da API
+      - name: Executar testes da API
         env:
           CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
@@ -35,16 +35,32 @@ jobs:
             --reporter mochawesome \
             --reporter-options "reportDir=cypress/report/api,overwrite=false,html=true,json=true"
 
+      # Executar testes do Frontend
+      - name: Executar testes do Frontend
+        env:
+          CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+        run: |
           npx cypress run --spec "cypress/e2e/front/**" \
             --reporter mochawesome \
             --reporter-options "reportDir=cypress/report/front,overwrite=false,html=true,json=true"
 
-      - name: Mesclar relatórios
-        run: npx mochawesome-merge "cypress/report/**/*.json" > cypress/report/merged-report.json
+      # Listar arquivos para conferir se foram gerados corretamente
+      - name: Listar relatórios gerados
+        run: ls -R cypress/report || echo "Nenhum relatório encontrado"
 
-      - name: Salvar Relatório Consolidado
+      # Salvar Relatório de Testes API
+      - name: Salvar Relatório API
         uses: actions/upload-artifact@v4
         with:
-          name: report
-          path: cypress/report
+          name: report-api
+          path: cypress/report/api
           retention-days: 5
+
+      # Salvar Relatório de Testes Frontend
+      - name: Salvar Relatório Frontend
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-front
+          path: cypress/report/front
+          retention-days: 5          
