@@ -40,7 +40,7 @@ jobs:
             --reporter-options "reportDir=cypress/report/front,overwrite=false,html=true,json=true"
 
       - name: Mesclar relatórios
-        run: npx mochawesome-merge "cypress/report/**/.json" > cypress/report/merged-report.json
+        run: npx mochawesome-merge "cypress/report/**/*.json" > cypress/report/merged-report.json
 
       - name: Salvar Relatório Consolidado
         uses: actions/upload-artifact@v4
