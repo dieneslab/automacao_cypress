@@ -1,7 +1,7 @@
 Feature: Finalizar compra em um e-commerce
 
   Scenario: Adicionar um produto ao carrinho e concluir a compra com sucesso
-    Given que o usuário acessa a página de login
+    Given que o usuário acessa a página ecommerce de login
     When ele insere o usuário "standard_user" e a senha "secret_sauce"
     And clica no botão de login
     Then ele deve ser redirecionado para a página de produtos

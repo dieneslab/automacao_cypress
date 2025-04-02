@@ -4,7 +4,7 @@ import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps'
 
 import { LoginSaucedemo, ProductList, ProductDetails, YourCart, CheckoutInformations, Overview, Complete,  } from '../../../pages/saucedemoPage'
 
-Given('que o usuário acessa a página de login', () => {
+Given('que o usuário acessa a página ecommerce de login', () => {
     cy.visit('https://www.saucedemo.com/')
 })
 
