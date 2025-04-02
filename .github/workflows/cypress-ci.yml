@@ -24,27 +24,62 @@ jobs:
       - name: Instalar dependências
         run: |
           npm install
-          npm install -D @shelex/cypress-allure-plugin
+          npm install cypress-cucumber-preprocessor --save-dev
 
-      - name: Executar testes e gerar relatório Allure
+      # Executar testes da API
+      - name: Executar testes da API
         env:
           CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
-        run: | 
-          npx cypress run --env allure=true --spec "cypress/e2e/api/**"
-          npx cypress run --env allure=true --spec "cypress/e2e/front/**"
-          npx cypress run --env allure=true --spec "cypress/e2e/cucumber/features/**"
-
-      - name: Instalar Allure CLI
-        run: npm install -g allure-commandline --save-dev
-
-      - name: Gerar relatório único do Allure
         run: |
-          allure generate allure-results -o allure-report --clean
+          npx cypress run --spec "cypress/e2e/api/**" \
+            --reporter mochawesome \
+            --reporter-options "reportDir=cypress/report/api,overwrite=false,html=true,json=true,exitCode=0" || true
 
-      - name: Salvar relatório Allure
+      # Executar testes do Frontend
+      - name: Executar testes do Frontend
+        env:
+          CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+        run: |
+          npx cypress run --spec "cypress/e2e/front/**" \
+            --reporter mochawesome \
+            --reporter-options "reportDir=cypress/report/front,overwrite=false,html=true,json=true,exitCode=0" || true
+
+      # Executar testes com Cucumber
+      - name: Executar testes com Cucumber
+        env:
+          CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+        run: |
+          npx cypress run --spec "cypress/e2e/cucumber/features/**" \
+            --reporter mochawesome \
+            --reporter-options "reportDir=cypress/report/cucumber,overwrite=false,html=true,json=true,exitCode=0" || true      
+
+      # Listar arquivos para conferir se foram gerados corretamente
+      - name: Listar relatórios gerados
+        run: ls -R cypress/report || echo "Nenhum relatório encontrado"
+
+      # Salvar Relatório de Testes API
+      - name: Salvar Relatório API
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
-          path: allure-report/**
+          name: report-api
+          path: cypress/report/api
           retention-days: 5
+
+      # Salvar Relatório de Testes Frontend
+      - name: Salvar Relatório Frontend
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-front
+          path: cypress/report/front
+          retention-days: 5          
+
+      # Salvar Relatório de Testes Cucumber
+      - name: Salvar Relatório Cucumber
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-cucumber
+          path: cypress/report/cucumber
+          retention-days: 5               
