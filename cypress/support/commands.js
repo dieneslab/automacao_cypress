@@ -1,3 +1,5 @@
+import { LoginSaucedemo } from '../pages/saucedemoPage'
+
 Cypress.Commands.add("abrirLoading", () => {
     Cypress.config('baseUrl', null)
     cy.visit('cypress/support/loading.html')
@@ -43,4 +45,14 @@ Cypress.Commands.add('putUserApi', (userId, body, expectedStatus) => {
     }).then((response) => {
         expect(response.status).to.eq(expectedStatus)
     })    
+})
+
+Cypress.Commands.add("loginSaucedemo", (usuario, senha) => {
+  cy.visit('https://www.saucedemo.com/')
+  cy.get(LoginSaucedemo.usernameInput)
+    .type(usuario)
+  cy.get(LoginSaucedemo.passwordInput)
+    .type(senha)
+  cy.get(LoginSaucedemo.loginButton)
+    .click()
 })
