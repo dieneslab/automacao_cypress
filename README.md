@@ -52,8 +52,9 @@ cd automacao_cypress
 
 ```sh
 npm install
-npm install mochawesome --save-dev
 npm install dotenv --save
+npm install mochawesome --save-dev
+npm install cypress-cucumber-preprocessor --save-dev
 ```
 
 ### 📄 Criar Arquivo /.env
@@ -82,6 +83,7 @@ Os relatórios são gerados automaticamente após a execução dos testes. Para 
 ```sh
 npx cypress run --spec "cypress/e2e/api/*" --reporter mochawesome --reporter-options "reportDir=cypress/report/api,overwrite=true,html=true,json=true"
 npx cypress run --spec "cypress/e2e/front/*" --reporter mochawesome --reporter-options "reportDir=cypress/report/front,overwrite=true,html=true,json=true"
+npx cypress run --spec "cypress/e2e/cucumber/features/*" --reporter mochawesome --reporter-options "reportDir=cypress/report/cucumber,overwrite=true,html=true,json=true"
 ```
 
 Os arquivos gerados ficam na pasta `cypress/reports`.

@@ -24,6 +24,7 @@ jobs:
       - name: Instalar dependências
         run: |
           npm install
+          npm install cypress-cucumber-preprocessor --save-dev
 
       # Executar testes da API
       - name: Executar testes da API
@@ -45,6 +46,16 @@ jobs:
             --reporter mochawesome \
             --reporter-options "reportDir=cypress/report/front,overwrite=false,html=true,json=true"
 
+      # Executar testes com Cucumber
+      - name: Executar testes com Cucumber
+        env:
+          CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+        run: |
+          npx cypress run --spec "cypress/e2e/cucumber/features/**" \
+            --reporter mochawesome \
+            --reporter-options "reportDir=cypress/report/cucumber,overwrite=false,html=true,json=true"      
+
       # Listar arquivos para conferir se foram gerados corretamente
       - name: Listar relatórios gerados
         run: ls -R cypress/report || echo "Nenhum relatório encontrado"
@@ -64,3 +75,11 @@ jobs:
           name: report-front
           path: cypress/report/front
           retention-days: 5          
+
+      # Salvar Relatório de Testes Cucumber
+      - name: Salvar Relatório Cucumber
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-cucumber
+          path: cypress/report/cucumber
+          retention-days: 5               
