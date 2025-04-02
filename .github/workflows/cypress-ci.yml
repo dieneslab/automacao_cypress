@@ -42,9 +42,9 @@ jobs:
         run: |
           allure generate allure-results -o allure-report --clean
 
-      - name: Salvar Relatório Allure
+      - name: Salvar relatório Allure
         uses: actions/upload-artifact@v4
         with:
-          name: report-allure
-          path: allure-report
+          name: allure-report
+          path: allure-report/**
           retention-days: 5
