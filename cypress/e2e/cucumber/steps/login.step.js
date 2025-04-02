@@ -8,17 +8,24 @@ Given('que o usuário acessa a página de login', () => {
   cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
 })
 
-When('ele preenche usuario e senha', () => {
+When('ele preenche o usuario {string} e a senha {string}', (usuario, senha) => {
   cy.get(LoginPage.emailInput)
-    .type('admin')
+    .type(usuario)
   cy.get(LoginPage.passwordInput)
-    .type('admin123')
+    .type(senha, { log: false })
   cy.get(LoginPage.loginButton)
     .click()
 })
 
-Then('ele deve ver a página inicial do sistema', () => {
+Then('ele deve ver o dashboard com título {string}', (mensagem) => {
   cy.get(LoginPage.dashboardTitle)  
     .should('be.visible')
-    .and('contain.text','Time at Work')
+    .and('contain.text', mensagem)
 })
+
+Then('ele deve ver a mensagem de erro {string}', (mensagem) => {
+  cy.get(LoginPage.alertLabel)
+    .should('be.visible')
+    .and('contain.text',mensagem)
+})
+
