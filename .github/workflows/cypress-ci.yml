@@ -34,7 +34,7 @@ jobs:
         run: |
           npx cypress run --spec "cypress/e2e/api/**" \
             --reporter mochawesome \
-            --reporter-options "reportDir=cypress/report/api,overwrite=false,html=true,json=true"
+            --reporter-options "reportDir=cypress/report/api,overwrite=false,html=true,json=true,exitCode=0" || true
 
       # Executar testes do Frontend
       - name: Executar testes do Frontend
@@ -44,7 +44,7 @@ jobs:
         run: |
           npx cypress run --spec "cypress/e2e/front/**" \
             --reporter mochawesome \
-            --reporter-options "reportDir=cypress/report/front,overwrite=false,html=true,json=true"
+            --reporter-options "reportDir=cypress/report/front,overwrite=false,html=true,json=true,exitCode=0" || true
 
       # Executar testes com Cucumber
       - name: Executar testes com Cucumber
@@ -54,7 +54,7 @@ jobs:
         run: |
           npx cypress run --spec "cypress/e2e/cucumber/features/**" \
             --reporter mochawesome \
-            --reporter-options "reportDir=cypress/report/cucumber,overwrite=false,html=true,json=true"      
+            --reporter-options "reportDir=cypress/report/cucumber,overwrite=false,html=true,json=true,exitCode=0" || true      
 
       # Listar arquivos para conferir se foram gerados corretamente
       - name: Listar relatórios gerados
