@@ -81,7 +81,7 @@ When('finaliza a compra', () => {
       .click()
 })
 
-Then('ele deve ver a mensagem {string}', (mensagem) => {
+Then('ele deve ver a mensagem de transação {string}', (mensagem) => {
     cy.get(Complete.messageLabel)
       .should('contain', mensagem)
 })

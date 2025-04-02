@@ -18,4 +18,4 @@ Feature: Finalizar compra em um e-commerce
       | Dienes | Stein     | 89000-000 |
     And clica no botão de continuar
     And finaliza a compra
-    Then ele deve ver a mensagem "Thank you for your order!"
+    Then ele deve ver a mensagem de transação "Thank you for your order!"
