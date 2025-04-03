@@ -25,6 +25,7 @@ jobs:
         run: |
           npm install
           npm install cypress-cucumber-preprocessor --save-dev
+          npm install cypress-multi-reporters mochawesome mochawesome-merge mochawesome-report-generator --save-dev
 
       # Executar testes da API
       - name: Executar testes da API
@@ -53,8 +54,8 @@ jobs:
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
         run: |
           npx cypress run --spec "cypress/e2e/cucumber/features/**" \
-            --reporter mochawesome \
-            --reporter-options "reportDir=cypress/report/cucumber,overwrite=false,html=true,json=true,exitCode=0" || true      
+          --reporter mochawesome \
+        --reporter-options "reportDir=cypress/report/cucumber,overwrite=false,html=true,json=true,exitCode=0" || true                  
 
       # Listar arquivos para conferir se foram gerados corretamente
       - name: Listar relatórios gerados
