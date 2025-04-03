@@ -61,6 +61,7 @@ npm install cypress-cucumber-preprocessor --save-dev
 
 ```sh
 CYPRESS_EMAIL=example@example.com
+CYPRESS_USER=teste
 CYPRESS_PASSWORD=password_senha
 ```
 

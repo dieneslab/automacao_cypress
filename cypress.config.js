@@ -10,6 +10,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
       config.env.email = process.env.CYPRESS_EMAIL
+      config.env.user = process.env.CYPRESS_USER
       config.env.password = process.env.CYPRESS_PASSWORD
       return config
     }

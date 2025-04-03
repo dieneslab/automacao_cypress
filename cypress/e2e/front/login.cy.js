@@ -10,7 +10,7 @@ describe('Teste Login', () => {
     it('Teste usuario e senha configurados no github', () => {
       cy.get(LoginPage.emailInput)
         .should('be.visible')
-        .type(Cypress.env('email'))
+        .type(Cypress.env('user'))
       cy.get(LoginPage.passwordInput)
         .type(Cypress.env('password'))
       cy.get(LoginPage.loginButton)

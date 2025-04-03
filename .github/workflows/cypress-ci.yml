@@ -30,6 +30,7 @@ jobs:
       - name: Executar testes da API
         env:
           CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_USER: ${{ secrets.CYPRESS_USER }}
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
         run: |
           npx cypress run --spec "cypress/e2e/api/**" \
@@ -40,6 +41,7 @@ jobs:
       - name: Executar testes do Frontend
         env:
           CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_USER: ${{ secrets.CYPRESS_USER }}
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
         run: |
           npx cypress run --spec "cypress/e2e/front/**" \
@@ -50,6 +52,7 @@ jobs:
       - name: Executar testes com Cucumber
         env:
           CYPRESS_EMAIL: ${{ secrets.CYPRESS_EMAIL }}
+          CYPRESS_USER: ${{ secrets.CYPRESS_USER }}
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
         run: |
           npx cypress run --spec "cypress/e2e/cucumber/features/**" \
