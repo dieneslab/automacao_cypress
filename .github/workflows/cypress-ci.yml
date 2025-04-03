@@ -54,8 +54,8 @@ jobs:
           CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
         run: |
           npx cypress run --spec "cypress/e2e/cucumber/features/**" \
-          --reporter mochawesome \
-        --reporter-options "reportDir=cypress/report/cucumber,overwrite=false,html=true,json=true,exitCode=0" || true                  
+            --reporter mochawesome \
+            --reporter-options "reportDir=cypress/report/cucumber,overwrite=false,html=true,json=true,exitCode=0" || true                  
 
       # Listar arquivos para conferir se foram gerados corretamente
       - name: Listar relatórios gerados
