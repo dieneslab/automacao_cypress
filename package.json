@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:run": "cypress run"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +22,5 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "step_definitions": "cypress/e2e/cucumber/steps"
-  }  
+  }
 }
