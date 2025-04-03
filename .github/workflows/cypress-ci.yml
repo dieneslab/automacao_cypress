@@ -35,7 +35,7 @@ jobs:
           allure open cypress/results/allure-report 
 
       - name: Upload Allure report as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: cypress/results/allure-report     
