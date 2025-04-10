@@ -3,9 +3,10 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 
 import { LoginPage } from '../../../pages/loginPage'
+import { URLS } from '../../../support/urls'
 
 Given('que o usuário acessa a página de login', () => {
-  cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+  cy.visit(URLS.orangeLogin)
 })
 
 When('ele preenche o usuario {string} e a senha {string}', (usuario, senha) => {

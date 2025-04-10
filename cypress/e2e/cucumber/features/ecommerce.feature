@@ -1,21 +1,36 @@
-Feature: Finalizar compra em um e-commerce
+# language: pt
 
-  Scenario: Adicionar um produto ao carrinho e concluir a compra com sucesso
-    Given que o usuário acessa a página ecommerce de login
-    When ele insere o usuário "standard_user" e a senha "secret_sauce"
-    And clica no botão de login
-    Then ele deve ser redirecionado para a página de produtos
+Funcionalidade: Finalizar compra em um e-commerce
 
-    When ele adiciona o produto "Sauce Labs Backpack" ao carrinho
-    And acessa o carrinho de compras
-    Then o carrinho deve conter 1 item
-    And o item deve ter o nome "Sauce Labs Backpack"
-    And o preço deve ser "$29.99"
+  Cenário: Adicionar um produto ao carrinho e concluir a compra com sucesso
+    Dado que o usuário acessa a página ecommerce de login
+    Quando ele insere o usuário "standard_user" e a senha "secret_sauce"
+    E clica no botão de login
+    Então ele deve ser redirecionado para a página de produtos
 
-    When ele inicia o checkout
-    And preenche os dados pessoais com:
+    Quando ele adiciona o produto "Sauce Labs Backpack" ao carrinho
+    E acessa o carrinho de compras
+    Então o carrinho deve conter 1 item
+    E o item deve ter o nome "Sauce Labs Backpack"
+    E o preço deve ser "$29.99"
+
+    Quando ele inicia o checkout
+    E preenche os dados pessoais com:
       | Nome   | Sobrenome | CEP       |
       | Dienes | Stein     | 89000-000 |
-    And clica no botão de continuar
-    And finaliza a compra
-    Then ele deve ver a mensagem de transação "Thank you for your order!"
+    E clica no botão de continuar
+    E finalizo a compra
+    Então devo ver a mensagem de transação "Thank you for your order!"
+
+  Cenário: Adicionar um produto ao carrinho e concluir a compra com sucesso (Melhorado)
+    Dado que realizo login com o usuário "standard_user" e senha "secret_sauce"
+    Quando adiciono o produto "Sauce Labs Backpack" ao carrinho
+    E acessa o carrinho de compras
+    Então o carrinho deve conter 1 item chamado "Sauce Labs Backpack" com o preço "$29.99"
+    
+    Quando inicio o checkout
+    E preencho os dados pessoais:
+      | Nome   | Sobrenome | CEP       |
+      | Dienes | Stein     | 89000-000 |
+    E finalizo a compra
+    Então devo ver a mensagem de transação "Thank you for your order!" 

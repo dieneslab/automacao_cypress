@@ -55,6 +55,7 @@ npm install
 npm install dotenv --save
 npm install mochawesome --save-dev
 npm install cypress-cucumber-preprocessor --save-dev
+npm install @faker-js/faker --save-dev
 ```
 
 ### 📄 Criar Arquivo /.env

@@ -1,11 +1,13 @@
-Feature: Login no sistema
+# language: pt
 
-    Scenario: Usuário faz login com credenciais válidas
-        Given que o usuário acessa a página de login
-        When ele preenche o usuario "admin" e a senha "admin123"
-        Then ele deve ver o dashboard com título "Time at Work"
+Funcionalidade: Login no sistema
 
-    Scenario: Usuário tenta login com senha inválida
-        Given que o usuário acessa a página de login
-        When ele preenche o usuario "admin" e a senha "senhaErrada"
-        Then ele deve ver a mensagem de erro "Invalid credentials"        
+    Cenário: Usuário faz login com credenciais válidas
+        Dado que o usuário acessa a página de login
+        Quando ele preenche o usuario "admin" e a senha "admin123"
+        Então ele deve ver o dashboard com título "Time at Work"
+
+    Cenário: Usuário tenta login com senha inválida
+        Dado que o usuário acessa a página de login
+        Quando ele preenche o usuario "admin" e a senha "senhaErrada"
+        Então ele deve ver a mensagem de erro "Invalid credentials"        

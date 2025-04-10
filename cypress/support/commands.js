@@ -1,4 +1,5 @@
-import { LoginSaucedemo } from '../pages/saucedemoPage'
+import { LoginSaucedemo } from '../pages/loginSaucedemoPage'
+import { URLS } from './urls'
 
 Cypress.Commands.add("abrirLoading", () => {
     Cypress.config('baseUrl', null)
@@ -8,7 +9,7 @@ Cypress.Commands.add("abrirLoading", () => {
 Cypress.Commands.add('loginApi', (email, password, expectedStatus) => {
     cy.request({
       method: 'POST',
-      url: 'https://reqres.in/api/login',
+      url: URLS.api + '/login',
       body: { email, password },
       failOnStatusCode: false
     }).then((response) => {
@@ -24,14 +25,14 @@ Cypress.Commands.add('loginApi', (email, password, expectedStatus) => {
 Cypress.Commands.add('getUserApi', (userId) => {
     return cy.request({
       method: 'GET',
-      url: `https://reqres.in/api/users/${userId}`
+      url: URLS.api + `/users/${userId}`
     })
 })
 
 Cypress.Commands.add('deleteUserApi', (userId, expectedStatus) => {
     return cy.request({
       method: 'DELETE',
-      url: `https://reqres.in/api/users/${userId}`
+      url: URLS.api + `/users/${userId}`
     }).then((response) => {
         expect(response.status).to.eq(expectedStatus)
     })    
@@ -40,7 +41,7 @@ Cypress.Commands.add('deleteUserApi', (userId, expectedStatus) => {
 Cypress.Commands.add('putUserApi', (userId, body, expectedStatus) => {
     return cy.request({
       method: 'PUT',
-      url: `https://reqres.in/api/users/${userId}`,
+      url: URLS.api + `/users/${userId}`,
       body: body
     }).then((response) => {
         expect(response.status).to.eq(expectedStatus)
@@ -48,7 +49,7 @@ Cypress.Commands.add('putUserApi', (userId, body, expectedStatus) => {
 })
 
 Cypress.Commands.add("loginSaucedemo", (usuario, senha) => {
-  cy.visit('https://www.saucedemo.com/')
+  cy.visit(URLS.saucedemo)
   cy.get(LoginSaucedemo.usernameInput)
     .type(usuario)
   cy.get(LoginSaucedemo.passwordInput)

@@ -1,6 +1,11 @@
 /// <reference types="cypress" />
 
-import { ProductList, ProductDetails, YourCart, CheckoutInformations, Overview, Complete,  } from '../../pages/saucedemoPage'
+import { ProductList } from '../../pages/productListPage'
+import { ProductDetails } from '../../pages/productDetailsPage'
+import { YourCart } from '../../pages/yourCartPage'
+import { CheckoutInformations } from '../../pages/checkoutInformationsPage'
+import { Overview } from '../../pages/overviewPage'
+import { Complete } from '../../pages/completePage'
 
 describe('Teste E-commerce', () => {
 

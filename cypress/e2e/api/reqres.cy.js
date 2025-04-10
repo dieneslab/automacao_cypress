@@ -1,10 +1,8 @@
 /// <reference types="cypress" />
 
+import { faker } from '@faker-js/faker'
+
 describe('Teste API', () => {
-  
-  beforeEach(() => {
-    cy.abrirLoading()
-  })  
 
   it('Teste de POST /login status 200', () => {
     cy.loginApi('eve.holt@reqres.in', 'cityslicka', 200)
@@ -59,8 +57,8 @@ describe('Teste API', () => {
     const idUsuario = 2
 
     const body = {
-      name: 'morpheus',
-      job: 'zion resident'
+      name: faker.person.firstName(),
+      job: faker.person.jobTitle()
     }
 
     cy.putUserApi(idUsuario, body, 200).then((response) => {
