@@ -21,6 +21,9 @@ Este projeto foi criado para explorar e demonstrar boas práticas de automação
 ├── 📂 cypress
 │   ├── 📂 download      # Mock de dados
 │   ├── 📂 e2e           # Testes automatizados
+│       ├── 📂 api         # Testes de APIs (validação de endpoints, status, payloads etc.)
+│       ├── 📂 cucumber    # Testes automatizados seguindo o método BDD com Cucumber + Gherkin
+│       ├── 📂 front       # Testes de frontend usando Cypress com linguagem JavaScript
 │   ├── 📂 fixtures      # Mock de dados
 │   ├── 📂 pages         # Mapeamento de elementos
 │   ├── 📂 report        # Relatórios dos testes (criado somente na execução com relatórios)
