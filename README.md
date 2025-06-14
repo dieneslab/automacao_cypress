@@ -78,6 +78,8 @@ CYPRESS_PASSWORD=password_senha
 npm run mock-server
 ```
 
+IMPORTANTE: Deixe rodando em um prompt paralelo quando for executar os testes de API localmente.
+
 ### ▶️ Executar Testes no Modo Interativo
 
 ```sh
