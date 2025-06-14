@@ -11,6 +11,6 @@ Funcionalidade: Preenchimento de formulário
         Dado que o usuário acessa o menu "My Info"
         Quando ele atualiza o formulário com os seguintes dados:
             | Name   | MiddleName | LastName | EmployeeID | LicenseExpiryDate | Nationality | Gender |
-            | Dienes | Nogueira   | Stein    | 199        | 2030-12-31        | Belarusian  | Female | 
+            | Dienes | Nogueira   | Stein    | 1990       | 2030-12-31        | Belarusian  | Female | 
         E clica no botão "Save"
         Então ele deve ver a mensagem "Successfully Updated"

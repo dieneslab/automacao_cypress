@@ -11,6 +11,9 @@ Cypress.Commands.add('loginApi', (email, password, expectedStatus) => {
       method: 'POST',
       url: URLS.api + '/login',
       body: { email, password },
+      headers: {
+        'x-api-key': 'reqres-free-v1'
+      },
       failOnStatusCode: false
     }).then((response) => {
       expect(response.status).to.eq(expectedStatus)
@@ -25,14 +28,20 @@ Cypress.Commands.add('loginApi', (email, password, expectedStatus) => {
 Cypress.Commands.add('getUserApi', (userId) => {
     return cy.request({
       method: 'GET',
-      url: URLS.api + `/users/${userId}`
+      url: URLS.api + `/users/${userId}`,
+      headers: {
+        'x-api-key': 'reqres-free-v1'
+      }
     })
 })
 
 Cypress.Commands.add('deleteUserApi', (userId, expectedStatus) => {
     return cy.request({
       method: 'DELETE',
-      url: URLS.api + `/users/${userId}`
+      url: URLS.api + `/users/${userId}`,
+      headers: {
+        'x-api-key': 'reqres-free-v1'
+      }
     }).then((response) => {
         expect(response.status).to.eq(expectedStatus)
     })    
@@ -42,7 +51,10 @@ Cypress.Commands.add('putUserApi', (userId, body, expectedStatus) => {
     return cy.request({
       method: 'PUT',
       url: URLS.api + `/users/${userId}`,
-      body: body
+      body: body,
+      headers: {
+        'x-api-key': 'reqres-free-v1'
+      }
     }).then((response) => {
         expect(response.status).to.eq(expectedStatus)
     })    

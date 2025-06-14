@@ -26,6 +26,13 @@ jobs:
           npm install
           npm install cypress-cucumber-preprocessor --save-dev
 
+      - name: Iniciar mock-server
+        run: |
+          nohup node cypress/mock/mock-server.js > mock.log 2>&1 &
+      
+      - name: Esperar mock-server responder
+        run: npx wait-on http://localhost:4567          
+
       # Executar testes da API
       - name: Executar testes da API
         env:

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mock-server": "node cypress/mock/mock-server.js",
+    "cy:apirun": "start-server-and-test mock-server http://localhost:4567 cypress run"
   },
   "keywords": [],
   "author": "",
@@ -18,10 +20,12 @@
     "cypress-multi-reporters": "^2.0.5",
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^5.0.0",
-    "mochawesome-report-generator": "^6.2.0"
+    "mochawesome-report-generator": "^6.2.0",
+    "start-server-and-test": "^2.0.12"
   },
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,

@@ -25,6 +25,7 @@ Este projeto foi criado para explorar e demonstrar boas práticas de automação
 │       ├── 📂 cucumber    # Testes automatizados seguindo o método BDD com Cucumber + Gherkin
 │       ├── 📂 front       # Testes de frontend usando Cypress com linguagem JavaScript
 │   ├── 📂 fixtures      # Mock de dados
+│   ├── 📂 mock          # Mock de serviços
 │   ├── 📂 pages         # Mapeamento de elementos
 │   ├── 📂 report        # Relatórios dos testes (criado somente na execução com relatórios)
 │   ├── 📂 support       # Comandos customizados e configurações globais
@@ -55,10 +56,12 @@ cd automacao_cypress
 
 ```sh
 npm install
+npm install express
 npm install dotenv --save
 npm install mochawesome --save-dev
 npm install cypress-cucumber-preprocessor --save-dev
 npm install @faker-js/faker --save-dev
+npm install start-server-and-test --save-dev
 ```
 
 ### 📄 Criar Arquivo /.env
