@@ -72,6 +72,12 @@ CYPRESS_USER=teste
 CYPRESS_PASSWORD=password_senha
 ```
 
+### ⚡ Subir paralelamente mock-server da API (localhost:4567)
+
+```sh
+npm run mock-server
+```
+
 ### ▶️ Executar Testes no Modo Interativo
 
 ```sh
