@@ -1,3 +1,32 @@
+/*
+Funcionalidade: Busca de termos no website
+
+  Cenário: Validar que um termo correto retorna um ID alfanumérico
+    Dado que o usuário envia uma requisição POST com um termo válido
+    Quando a API processa a requisição
+    Então o sistema deve retornar um ID contendo 8 caracteres alfanuméricos
+
+  Cenário: Testar termos inválidos
+    Dado que o usuário envia um termo com menos de 4 caracteres
+    Quando a API valida a entrada
+    Então o sistema deve retornar um erro informando a restrição
+
+  Cenário: Consultar resultados de busca ativos
+    Dado que o usuário envia uma requisição GET com um ID existente
+    Quando a API processa a consulta
+    Então o sistema deve retornar o status e as URLs encontradas
+
+  Cenário: Consultar ID inexistente
+    Dado que o usuário consulta um ID inválido
+    Quando a API tenta recuperar os dados
+    Então o sistema deve retornar uma mensagem de erro
+
+  Cenário: Verificar resultados parciais durante a busca
+    Dado que a busca está em andamento
+    Quando o usuário consulta os resultados
+    Então o sistema deve retornar as URLs já encontradas
+*/
+
 describe('Testes com API mockada', () => {
     it('Cria uma nova busca', () => {
       const keyword = 'security'
